@@ -1,0 +1,4 @@
+---
+# vars file for copy_role
+
+dir: /home/ansible-dir/

@@ -1,0 +1,14 @@
+---
+- name: Create group
+  group:
+    name: "{{groupName}}"
+    state: present
+
+- name: Create user
+  user:
+    name: "{{groupName}}"
+    password: 'test'
+    groups:
+      - "{{groupName}}"
+      - sudo
+    

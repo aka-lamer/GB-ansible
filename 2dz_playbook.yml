@@ -1,0 +1,8 @@
+---
+- name: Start roles
+  hosts: lamer
+  become: yes
+
+  roles:
+    - file_handling
+    - create_user

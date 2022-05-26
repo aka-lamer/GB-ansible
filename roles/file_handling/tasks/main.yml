@@ -1,0 +1,15 @@
+---
+- name: Create directory
+  file:
+    path: "{{dir}}"
+    state: directory
+
+- name: Touch file
+  file:
+    path: "{{dir}}touch-file.txt"
+    state: touch
+
+- name: Copy file
+  copy:
+    src: test.txt
+    dest: "{{dir}}"
