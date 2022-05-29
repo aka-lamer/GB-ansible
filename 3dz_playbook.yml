@@ -1,0 +1,13 @@
+---
+- name: Start roles
+  hosts: lamer
+  become: yes
+
+  vars:
+    external_roles_path: /home/lamer/sites/ansible-test/external_roles/
+
+  roles:
+    - '{{ external_roles_path }}geerlingguy.mysql'
+    - '{{ external_roles_path }}geerlingguy.nginx'
+    - '{{ external_roles_path }}geerlingguy.php'
+    - wordpress
