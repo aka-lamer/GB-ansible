@@ -1,0 +1,5 @@
+---
+# vars file for users_role
+
+groupName: user-1
+dir: "/home/{{ groupName }}/apps/"
