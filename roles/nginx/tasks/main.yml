@@ -1,3 +1,8 @@
 ---
+- name: 'Docker'
+  include_tasks: docker.yml
+  when: docker | default('false') | bool
 
-    
+- name: 'Baremetal'
+  include_tasks: baremetal.yml
+  when: not docker | default('false') | bool  

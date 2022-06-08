@@ -1,0 +1,45 @@
+---
+- name: Add Docker Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+    
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Update apt and install
+  apt: 
+    update_cache: yes 
+    name: "{{ item }}" 
+    state: latest
+  loop: 
+    - python3-pip
+    - docker-ce
+
+- name: Install pip docker
+  pip:
+    name: docker
+
+- name: Ensure docker service started
+  systemd:
+    name: docker
+    state: started    
+    enabled: true
+
+- name: Install nginx
+  docker_container:
+    name: nginx
+    image: nginx:latest
+    restart_policy: always
+    ports:
+      - "80:80"
+    volumes:
+      - template/nginx.j2:/etc/nginx/sites-available/00_conf.conf
+
+
+
+
+
+

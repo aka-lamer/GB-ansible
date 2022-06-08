@@ -1,0 +1,13 @@
+---
+- name: Update apt and install
+  apt: 
+    update_cache: yes 
+    name: "{{ item }}" 
+    state: latest
+  loop: 
+    - nginx
+
+- name: Template add
+  template:
+    src: template/nginx.j2
+    dest: /etc/nginx/sites-available/00_conf.conf
