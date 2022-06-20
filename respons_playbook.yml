@@ -1,0 +1,7 @@
+---
+- name: Start roles
+  hosts: lamer
+  become: yes
+
+  roles:
+    - response
