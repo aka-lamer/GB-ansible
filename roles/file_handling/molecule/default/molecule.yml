@@ -1,0 +1,14 @@
+---
+dependency:
+  name: galaxy
+  enabled: true
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: pycontribs/ubuntu
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
