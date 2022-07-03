@@ -1,0 +1,29 @@
+---
+- name: Block create app user
+  block:
+    - name: Create group
+      group:
+        name: "{{groupName}}"
+        state: present
+
+    - name: Create user
+      user:
+        name: "{{groupName}}"
+        password: 'test'
+        groups:
+          - "{{groupName}}"
+          - sudo
+        
+    - name: Create directory
+      file:
+        path: "{{dir}}"
+        state: directory
+  rescue:
+    - name: If Error
+      mail:
+        host: localhost
+        port: 25
+        to: aka-lamer@yandex.ru
+        subject: Ansible-report
+        body: System {{ ansible_hostname }} has been successfully provisioned.
+      delegate_to: localhost

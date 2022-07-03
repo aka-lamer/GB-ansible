@@ -1,0 +1,8 @@
+---
+- name: Start roles
+  hosts: lamer
+  become: yes
+
+  roles:
+    - create_app_user
+    - create_docker
