@@ -1,0 +1,8 @@
+---
+- name: Start roles
+  hosts: lamer
+  become: yes
+
+  roles:
+    - { role: file_handling, tags: [file] }
+    - { role: create_user, tags: [user]}

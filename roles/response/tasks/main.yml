@@ -1,0 +1,17 @@
+---
+- name: Check domain status
+  block:
+    - name: module Url
+      uri:
+        url: "http://10.100.10.46"
+        method: GET
+      register: result
+
+    - name: Check status
+      fail:
+        msg: "Status code is not 200"
+      when: result.server == "nginx" and result.status != 200
+
+    - name: Debug
+      debug:
+        msg: "{{ result }}"
